@@ -15,3 +15,8 @@
       (is (re-find #"<em>" body))
       (is (re-find #"<strong>" body))
       (is (re-find #"an amazing post" body)))))
+
+(deftest templates-test
+  (testing "that the templates render a full HTML page."
+    (let [body (:body (app (request :get "/posts/sample_post")))]
+      (is (re-find #"<html>" body)))))
