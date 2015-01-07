@@ -1,3 +1,6 @@
+Title: Sample Post
+Author: Me
+---
 A Heading
 =========
 
