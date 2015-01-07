@@ -1,14 +1,12 @@
 # flatland
 
-A Clojure library designed to ... well, that part is up to you.
+A flat-file CMS using Hiccup for templating.
 
 ## Usage
 
-FIXME
+I wanted to do a blog without leaving Clojure-land (Octopress was too much overhead). It doesn't work yet.
 
 ## License
-
-Copyright © 2015 FIXME
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
