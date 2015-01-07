@@ -13,4 +13,5 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [ring/ring-core "1.2.1"]
                  [ring/ring-jetty-adapter "1.2.1"]
-                 [compojure "1.1.6"]])
+                 [compojure "1.1.6"]
+                 [markdown-clj "0.9.61" :exclusions [org.clojure/clojure]]])
