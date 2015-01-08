@@ -17,7 +17,7 @@
 
 (deftest posts-test
   (testing "Markdown conversion results in HTML."
-    (let [body (:body (app (request :get "/posts/sample_post")))]
+    (let [body (:body (app (request :get "/posts/vladimir")))]
       (is (re-find #"<h1>" body))
       (is (re-find #"<em>" body))
       (is (re-find #"<strong>" body))
