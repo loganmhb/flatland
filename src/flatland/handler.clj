@@ -100,4 +100,4 @@
 
 (defn -main
   []
-  (jetty/run-jetty app))
+  (jetty/run-jetty app {}))
