@@ -73,15 +73,12 @@
   ;; using a regex here to avoid parsing the markdown html back into hiccup data
   (clojure.string/replace template #"<div class=\"replace-me\"></div>" content))
 
-(defn- render-post-with-template
-  [name]
-  (render-with-template template (render-post name)))
-
 (defn- render-index
   []
   (render-with-template template (html (for [post (map #(get posts %) (keys posts))]
                                          [:section {:class "post"}
-                                          [:h3 (:title post)]
+                                          [:h3
+                                           [:a {:href (str (:base-url config) "posts/" ())}] (:title post)]
                                           [:p (:content post)]]))))
 
 (defroutes app
