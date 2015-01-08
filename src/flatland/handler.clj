@@ -3,7 +3,8 @@
             [compojure.route :as route]
             [markdown.core :refer [md-to-html-string]]
             [hiccup.core :refer [html]]
-            [ring.adapter.jetty :as jetty]))
+            [ring.adapter.jetty :as jetty]
+            [environ.core :refer [env]]))
 
 (defn- parse-yaml
   "Parses yaml data into a Clojure map."
@@ -100,4 +101,4 @@
 
 (defn -main
   []
-  (jetty/run-jetty app {:port 5000}))
+  (jetty/run-jetty app {:port (or (env :port) 5000)}))

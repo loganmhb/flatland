@@ -14,5 +14,6 @@
                  [ring "1.3.2"]
                  [compojure "1.1.6"]
                  [hiccup "1.0.5"]
-                 [markdown-clj "0.9.61" :exclusions [org.clojure/clojure]]]
+                 [markdown-clj "0.9.61" :exclusions [org.clojure/clojure]]
+                 [environ "0.5.0"]]
   :main flatland.handler)
