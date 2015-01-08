@@ -2,7 +2,8 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [markdown.core :refer [md-to-html-string]]
-            [hiccup.core :refer [html]]))
+            [hiccup.core :refer [html]]
+            [ring.adapter.jetty :as jetty]))
 
 (defn- parse-yaml
   "Parses yaml data into a Clojure map."
@@ -96,3 +97,7 @@
        (render-with-template template (render-page page)))
   (route/files "/" {:root "public"})
   (route/not-found "<h1>Page not found.</h1>"))
+
+(defn -main
+  []
+  (jetty/run-jetty app {:port (or (System/getenv "PORT") 5000)}))

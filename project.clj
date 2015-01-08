@@ -11,8 +11,8 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [ring/ring-core "1.2.1"]
-                 [ring/ring-jetty-adapter "1.2.1"]
+                 [ring "1.3.2"]
                  [compojure "1.1.6"]
                  [hiccup "1.0.5"]
-                 [markdown-clj "0.9.61" :exclusions [org.clojure/clojure]]])
+                 [markdown-clj "0.9.61" :exclusions [org.clojure/clojure]]]
+  :main flatland.handler)
