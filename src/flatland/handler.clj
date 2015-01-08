@@ -100,4 +100,4 @@
 
 (defn -main
   []
-  (jetty/run-jetty app {:port (or (System/getenv "PORT") 5000)}))
+  (jetty/run-jetty app))
