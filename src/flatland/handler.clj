@@ -75,11 +75,14 @@
 
 (defn- render-index
   []
-  (render-with-template template (html (for [post (map #(get posts %) (keys posts))]
-                                         [:section {:class "post"}
-                                          [:h3
-                                           [:a {:href (str (:base-url config) "posts/" ())}] (:title post)]
-                                          [:p (:content post)]]))))
+  (render-with-template template
+                        (html (for [[name post]
+                                    (map #(find posts %) (keys posts))]
+                                [:section {:class "post"}
+                                 [:h3
+                                  [:a {:href (str (:base-url config) "posts/" name)}
+                                      (:title post)]]
+                                 [:p (:content post)]]))))
 
 (defroutes app
   (GET "/" [] (render-index))
