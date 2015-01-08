@@ -33,8 +33,7 @@
 (def pages (load-md "resources/pages"))
 
 (def config {:title "Cognitive Jetsam"
-             :base-url "http://blog.loganbuckley.com/"
-             :pages pages})
+             :base-url "http://blog.loganbuckley.com/"})
 
 (def template
   (str "<!DOCTYPE html>"
@@ -47,8 +46,9 @@
                 [:div {:class "inner clearfix"}
                  [:h1 [:a {:href (:base-url config)} (:title config)]]
                  [:ul {:class "nav"}
-                  (for [page (:pages config)]
-                    [:li [:a {:href (get page :url)} (get page :title)]])]]]
+                  (for [[name page] pages]
+                    [:li [:a {:href (str (:base-url config) name)}
+                          (get page :title)]])]]]
                [:section {:id "content"}
                 [:div {:class "inner"}
                  [:div {:class "replace-me"}]]] ; workaround to avoid parsing HTML
