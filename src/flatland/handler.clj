@@ -60,7 +60,8 @@
 (defn- render-post
   "Retrieve post with filename <name>.md and convert it to HTML."
   [name]
-  (md-to-html-string (:content (get posts name))))
+  (let [post (get posts name)]
+    (md-to-html-string (str "###" (:title post) "\n" (:content post)))))
 
 (defn- render-page
   [name]
