@@ -63,11 +63,11 @@
   "Retrieve post with filename <name>.md and convert it to HTML."
   [name]
   (let [post (get posts name)]
-    (md-to-html-string (str "###" (:title post) "\n" (:content post)))))
+    (md-to-html-string (str "###" (:title post) "\n" (:content post)) :reference-links true)))
 
 (defn- render-page
   [name]
-  (md-to-html-string (:content (get pages name))))
+  (md-to-html-string (:content (get pages name)) :reference-links true))
 
 (defn- render-with-template
   "Takes content (as HTML string) and renders it in the <div class=\"content\">
@@ -101,4 +101,5 @@
 
 (defn -main
   []
-  (jetty/run-jetty app {:port (or (Integer. (env :port)) 5000)}))
+  (jetty/run-jetty app {:port (or (Integer/parseInt (env :port))
+                                  5000)}))

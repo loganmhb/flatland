@@ -19,13 +19,11 @@
   (testing "Markdown conversion results in HTML."
     (let [body (:body (app (request :get "/posts/vladimir")))]
       (is (re-find #"<h1>" body))
-      (is (re-find #"<em>" body))
-      (is (re-find #"<strong>" body))
-      (is (re-find #"an amazing post" body)))))
+      (is (re-find #"Vladimir" body)))))
 
 (deftest templates-test
   (testing "that the templates render a full HTML page."
-    (let [body (:body (app (request :get "/posts/sample_post")))]
+    (let [body (:body (app (request :get "/posts/vladimir")))]
       (is (re-find #"<html>" body)))))
 
 (deftest resilient-urls
