@@ -9,10 +9,10 @@
 (defroutes app
   (GET "/" [] (render-index))
   ;; Only match posts that exist
-  (GET ["/posts/:name", :name (re-pattern (clojure.string/join "|" (keys posts)))]
+  (GET ["/posts/:name", :name (re-pattern (clojure.string/join "|" (keys (posts))))]
        [name]
        (render-with-template template (render-post name)))
-  (GET ["/:page", :page (re-pattern (clojure.string/join "|" (keys pages)))]
+  (GET ["/:page", :page (re-pattern (clojure.string/join "|" (keys (pages))))]
        [page]
        (render-with-template template (render-page page)))
   (route/files "/" {:root "public"})
