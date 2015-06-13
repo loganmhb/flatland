@@ -12,12 +12,19 @@
           (map #(clojure.string/split % #": ")
                (clojure.string/split yaml  #"\n"))))
 
+(defn- gistify
+  "Replaces %gist[id] in markdown w/ appropriate html."
+  [content]
+  (clojure.string/replace content
+                          #"%gist([\da-z]+)"
+                          "<p><code data-gist-id=$1></code></p>"))
+
 (defn- slurp-md
   "Takes a Markdown file and returns a map with the content and yaml data."
   [post-file]
   (let [text (slurp post-file)]
     (let [[data content] (clojure.string/split text #"\n---\n" 2)]
-      (assoc (parse-yaml data) :content (md-to-html-string content)))))
+      (assoc (parse-yaml data) :content (md-to-html-string (gistify content))))))
 
 ;; Read posts from resources/posts and parse them into maps (keys :yaml, :content),
 ;; storing them in one large map keyed by name (WITHOUT .md extension)
