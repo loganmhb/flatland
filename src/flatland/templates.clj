@@ -41,18 +41,26 @@
 (defn config [] {:title "(un)timely"
                  :base-url (or (env :base-url) "http://localhost:3000/")})
 
-(defn include-script [link]
-  [:script {:type "text/javascript"
-            :src link}])
+(defn include-scripts [& links]
+  (for [link links]
+    [:script {:type "text/javascript"
+              :src link}]))
+
+(defn include-stylesheets [& links]
+  (for [link links]
+    [:link {:rel "stylesheet" :href link}]))
 
 (def template
   (str "<!DOCTYPE html>"
        (html [:html
               [:head
                [:title (:title (config))]
-               [:link {:rel "stylesheet" :href "/css/style.css"}]
-               (include-script "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
-               (include-script "https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js")]
+               (include-stylesheets
+                "/css/style.css"
+                "http://fonts.googleapis.com/css?family=Raleway")               
+               (include-scripts
+                "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+                "https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js")]
               [:body
                [:header {:id "header"}
                 [:div {:class "inner clearfix"}

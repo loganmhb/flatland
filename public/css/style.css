@@ -25,9 +25,9 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 body {
-	line-height: 1;
+	line-height: 1.4;
 	color: black;
-	background: white;
+	background: #EEEEEE;
 }
 
 table {
@@ -96,10 +96,9 @@ select:focus {
 /* Main Styles
 /*---------------------------------------------*/
 body {
-	font: 14px/1.8em 'Open Sans', Helvetica, Arial, Helvetica, sans-serif;
+	font: 16px/2em 'Raleway', Helvetica, Arial, Helvetica, sans-serif;
 	color: #444;
 	background: #fff;
-	-webkit-font-smoothing: antialiased;
 }
 
 a, a:visited {

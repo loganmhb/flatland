@@ -7,14 +7,16 @@
   "Retrieve post with filename <name>.md and convert it to HTML."
   [name]
   (let [post (get (posts) name)]
-    (md-to-html-string (str "###" (:title post) "\n" (:content post)) :reference-links true)))
+    (md-to-html-string
+     (str "###" (:title post) "\n" (:content post))
+     :reference-links true)))
 
 (defn render-page
   [name]
   (md-to-html-string (:content (get (pages) name)) :reference-links true))
 
 (defn render-with-template
-  "Takes content (as HTML string) and renders it in the <div class=\"content\">
+  "Takes content (as HTML string) and renders it in the <div class=\"replace-me\">
    element of the template."
   [template content]
   ;; using a regex here to avoid parsing the markdown html back into hiccup data
@@ -29,5 +31,6 @@
                                 [:section {:class "post"}
                                  [:h3
                                   [:a {:href (str (:base-url config) "posts/" name)}
-                                      (:title post)]]
+                                   (:title post)]]
+                                 [:h4 (:date post)]
                                  [:p (:content post)]]))))
